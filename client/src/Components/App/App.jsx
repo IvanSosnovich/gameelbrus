@@ -1,11 +1,12 @@
 import './App.css';
-import React, { useState } from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
 } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import LogIn from '../LogIn/Login';
 import Register from '../Register/Register';
 import Questions from '../Questions/Questions';
@@ -14,7 +15,7 @@ import TableResult from '../TableResult/TableResult';
 import Navigation from '../Navigation/Navigation';
 
 function App() {
-  const [auth, setAuth] = useState(true);
+  const auth = useSelector((state) => state.auth);
 
   if (auth) {
     return (
@@ -42,10 +43,10 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/">
-            <LogIn setAuth={setAuth} />
+            <LogIn />
           </Route>
           <Route exact path="/register">
-            <Register setAuth={setAuth} />
+            <Register />
           </Route>
           <Redirect to="/" />
         </Switch>

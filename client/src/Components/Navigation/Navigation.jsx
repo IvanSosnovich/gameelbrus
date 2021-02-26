@@ -1,5 +1,6 @@
 import React from 'react';
+import './navigation.css';
 
 export default function Navigation() {
-  return <div>Navigation</div>;
+  return <div className="navigation">Navigation</div>;
 }

@@ -1,35 +1,34 @@
-import React from "react";
-import "./MainPage.css";
-// import { Link, useParams } from "react-router-dom";
+import React from 'react';
+import './MainPage.css';
+import { Link } from 'react-router-dom';
 
 export default function MainPage() {
-
   return (
     <div className="main">
       <div className="game">
         <div className="theme">
           <div className="nameTheme">Тема игры 1</div>
-          <a className="quest" href="#">
+          <Link className="quest" to="/">
             <div>Вопрос 1</div>
-          </a>
-          <a className="quest" href="#">
+          </Link>
+          <Link className="quest" to="/">
             <div>Вопрос 2</div>
-          </a>
-          <a className="quest" href="#">
+          </Link>
+          <Link className="quest" to="/">
             <div>Вопрос 3</div>
-          </a>
+          </Link>
         </div>
         <div className="theme">
           <div className="nameTheme">Тема игры 2</div>
-          <a className="quest" href="#">
+          <Link className="quest" to="/">
             <div>Вопрос 1</div>
-          </a>
-          <a className="quest" href="#">
+          </Link>
+          <Link className="quest" to="/">
             <div>Вопрос 2</div>
-          </a>
-          <a className="quest" href="#">
+          </Link>
+          <Link className="quest" to="/">
             <div>Вопрос 3</div>
-          </a>
+          </Link>
         </div>
       </div>
     </div>
