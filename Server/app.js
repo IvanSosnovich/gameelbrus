@@ -59,7 +59,9 @@ app.get("/api/elbrusgame", async (req, res) => {
 
 app.post("/api/register", (req,res) => {
   const { name, email, password } = req.body;
-
+  const newUser = { name, email, password };
+  todos.push(newTodo);
+  res.json(newTodo);
 })
 
 app.get("/api/login", (req,res) => {
