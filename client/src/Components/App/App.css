@@ -13,3 +13,18 @@
   justify-content: center;
 }
 
+.App-auth {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 10% repeat(3, 30%);
+  grid-template-columns: repeat(4,25);
+  grid-template-areas: 
+  'navigation navigation navigation navigation'
+  'mainpage mainpage mainpage mainpage'
+  'mainpage mainpage mainpage mainpage'
+  'mainpage mainpage mainpage mainpage'
+  ;
+}

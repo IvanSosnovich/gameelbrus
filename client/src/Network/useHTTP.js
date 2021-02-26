@@ -2,7 +2,7 @@ class UseHttp {
   constructor() {
     this.urlLogin = 'api/login';
     this.urlRegister = 'api/register';
-    this.urlQuestion = '/api/question';
+    this.urlQuestion = '/api/elbrusgame';
   }
 
   async logIn(email, password) {
@@ -29,6 +29,16 @@ class UseHttp {
       },
       body: JSON.stringify({ email, password, name }),
     });
+    if (result.status === '200') {
+      const data = result.json();
+      console.log(data);
+    } else {
+      console.log('error register');
+    }
+  }
+
+  async addQuestion() {
+    const result = await fetch(this.urlQuestion);
     if (result.status === '200') {
       const data = result.json();
       console.log(data);

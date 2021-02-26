@@ -1,0 +1,3 @@
+const SAVE_QUESTIUON = 'SAVE_QUESTIUON';
+
+export default { SAVE_QUESTIUON };
