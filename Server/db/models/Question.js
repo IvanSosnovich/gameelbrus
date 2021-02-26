@@ -9,11 +9,15 @@ const questionSchema = new Schema({
     ref: 'category',
   },
   answer: String,
-  price: Number
+  price: Number,
+  isChosen: Boolean,
 });
 
-questionSchema.statics.mostRecent = async function () {
-  return this.find().populate('category').limit(5).exec();
+questionSchema.statics.onlyThree = async function () {
+  // return this.find({ isChosen: false }).populate('category').limit(3).exec();
+  return this.find({ isChosen: false }).sort({ 'category': 1, 'price': 1 }).populate('category').limit(3).exec();
+
+
 };
 
 module.exports = model('question', questionSchema);

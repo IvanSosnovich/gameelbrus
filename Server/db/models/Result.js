@@ -5,7 +5,6 @@ pluralize(null);
 
 const resultSchema = new Schema({
   user: String,
-  category: String,
   score: Number,
 });
 
