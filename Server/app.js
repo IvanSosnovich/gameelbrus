@@ -20,24 +20,25 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
-// const sessionConfig = {
-//   secret: 'secret',
-//   resave: false,
-//   saveUninitialized: false,
-//   cookie: {
-//     secure: false,
-//     maxAge: 1000 * 60 * 60,
-//     httpOnly: false,
-//   },
-// };
+const sessionConfig = {
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: false,
+    maxAge: 1000 * 60 * 60,
+    httpOnly: false,
+  },
+};
 
-// app.use(session(sessionConfig));
+app.use(session(sessionConfig));
 
-// app.use((req, res, next) => {
-//   res.locals.user = req.session?.user;
-//   next();
-// });
+app.use((req, res, next) => {
+  res.locals.user = req.session?.user;
+  next();
+});
 
+//====================Ручки игры
 
 // отправляет всю игру
 app.get("/api/elbrusgame", async (req, res) => {
@@ -46,7 +47,8 @@ app.get("/api/elbrusgame", async (req, res) => {
   let questions;
   try {
     categories = await Category.find();
-    questions = await Question.find().sort({'category': 1, 'price': 1}).populate('category').exec();
+    // questions = await Question.find().sort({ 'category': 1, 'price': 1 }).populate('category').exec();
+    questions = await Question.onlyThree();
 
   } catch (error) {
     console.log('Не удалось загрузить категории.')
@@ -56,25 +58,45 @@ app.get("/api/elbrusgame", async (req, res) => {
 
 });
 
+app.get("/api/question", async (req,res) => {
+  try {
+    
+  } catch (error) {
+    
+  }
 
-app.post("/api/register", (req,res) => {
+})
+// =====================Register, Login, Logout
+
+app.post("/api/register", async (req, res) => {
   const { name, email, password } = req.body;
-
+  const newUser = { name, email, password };
+  await User.create(newUser);
+  res.json(newUser);
 })
 
-app.get("/api/login", (req,res) => {
+app.get("/api/login", (req, res) => {
+  const { email, password } = req.body;
+  const user = await User.findOne({ email }).lean();
+  if (user) {
+    if (password === user.password) {
+      req.session.user = user;
+      res.send(200).json(user);
+    }
+  }
 
-})
+  res.sendStatus(500);
 
-
-app.post("/api/todos", (req, res) => {
-  const { title, priority } = req.body;
-  const id = Date.now();
-  const newTodo = { id, title, priority };
-  todos.push(newTodo);
-  res.json(newTodo);
 });
 
+
+app.get("/api/logout", (req, res) => {
+  req.session.destroy();
+  res.clearCookie("sid");
+  res.redirect("/");
+});
+
+//=====================Запуск сервера
 
 app.listen(process.env.PORT, () => {
   console.log('Сервер запустился');
