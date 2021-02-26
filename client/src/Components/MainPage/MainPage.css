@@ -1,0 +1,59 @@
+.main {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: column nowrap;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  background-color: #024f94;
+}
+
+.game {
+  box-shadow: 0px 0px 15px 5px #efd091;
+  /* border: solid 2px black; */
+  height: 80vh;
+  width: 90vw;
+  display: flex;
+  flex-flow: column nowrap;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.theme {
+  /* border: solid 2px green; */
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.nameTheme {
+  /* border: solid 2px #050814; */
+  height: 100%;
+  width: 150%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #efd091;
+  color: #050814;
+  box-shadow: 0px 0px 1px 2px #050814;
+}
+
+.quest {
+  /* border: solid 2px #050814; */
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #efd091;
+  color: #050814;
+  box-shadow: 0px 0px 1px 2px #050814;
+}
