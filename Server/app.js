@@ -35,7 +35,7 @@ app.use(cors());
 
 
 
-app.get("/api/todos", (req, res) => {
+app.get("/api/category", (req, res) => {
   res.json(todos);
 });
 
